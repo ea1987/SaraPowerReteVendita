@@ -1,0 +1,180 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/jedis/get" : {
+      "get" : {
+        "description" : "",
+        "operationId" : "get-jedis-get",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "type",
+          "in" : "query",
+          "description" : "",
+          "type" : "integer",
+          "format" : "int32",
+          "required" : false
+        }, {
+          "name" : "key",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a response to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/response"
+            }
+          }
+        }
+      }
+    },
+    "/jedis/set" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-jedis-set",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/request"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a response to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/response"
+            }
+          }
+        }
+      }
+    },
+    "/jedis/clear" : {
+      "delete" : {
+        "description" : "",
+        "operationId" : "delete-jedis-clear",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "key",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a response to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/response"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "request" : {
+      "type" : "object",
+      "required" : [ "key" ],
+      "properties" : {
+        "key" : {
+          "type" : "string"
+        },
+        "valueElement" : {
+          "$ref" : "#/definitions/valueElement"
+        }
+      }
+    },
+    "listValue" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "uniqueItems" : false
+          }
+        },
+        "distinctValues" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "valueElement" : {
+      "type" : "object",
+      "required" : [ "listValue", "stringValue", "hmapValue" ],
+      "properties" : {
+        "stringValue" : {
+          "type" : "string"
+        },
+        "listValue" : {
+          "$ref" : "#/definitions/listValue"
+        },
+        "hmapValue" : {
+          "$ref" : "#/definitions/hmapValue"
+        }
+      }
+    },
+    "response" : {
+      "type" : "object",
+      "required" : [ "result", "key", "responseCode" ],
+      "properties" : {
+        "key" : {
+          "type" : "string"
+        },
+        "valueElement" : {
+          "$ref" : "#/definitions/valueElement"
+        },
+        "result" : {
+          "type" : "string"
+        },
+        "responseCode" : {
+          "type" : "string"
+        },
+        "responseMessage" : {
+          "type" : "string"
+        }
+      }
+    },
+    "hValue" : {
+      "type" : "object",
+      "required" : [ "value", "key" ],
+      "properties" : {
+        "key" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "hmapValue" : {
+      "type" : "object",
+      "properties" : {
+        "hValue" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/hValue",
+            "uniqueItems" : false
+          }
+        }
+      }
+    }
+  }
+}

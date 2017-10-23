@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema elementFormDefault="qualified" targetNamespace="http://jedis.com/JedisManagment" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://jedis.com/JedisManagment">
+	<element name="request" type="tns:requestType"/>
+	<element name="response" type="tns:responseType"/>
+	<element name="hmapValue" type="tns:hmapValueType"/>
+	<complexType name="requestType">
+		<sequence>
+			<element name="key" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="valueElement" type="tns:valueType"/>
+		</sequence>
+	</complexType>
+	<complexType name="valueType">
+		<choice>
+			<element name="stringValue" type="string"/>
+			<element name="listValue" type="tns:listValueType"/>
+			<element name="hmapValue" type="tns:hmapValueType"/>
+		</choice>
+	</complexType>
+	<complexType name="listValueType">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="value" type="string"/>
+		</sequence>
+		<attribute default="false" name="distinctValues" type="boolean"/>
+	</complexType>
+	<complexType name="hmapValueType">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="hValue" type="tns:hValueType"/>
+		</sequence>
+	</complexType>
+	<complexType name="hValueType">
+		<sequence>
+			<element name="key" type="string"/>
+			<element name="value" type="string"/>
+		</sequence>
+	</complexType>
+	<complexType name="responseType">
+		<sequence>
+			<element name="key" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="valueElement" type="tns:valueType"/>
+			<element name="result" type="string"/>
+			<element name="responseCode" type="string"/>
+			<element minOccurs="0" name="responseMessage" type="string"/>
+		</sequence>
+	</complexType>
+</schema>

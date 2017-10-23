@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_4oU6gKdvEeezxaQN1OMdFQ" targetNamespace="http://tns.tibco.com/bw/composite/JedisCacheAWS.module" name="JedisCacheAWS.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_P6zMEKjcEee-or8dxyMlng" name="jedis-set" promote="ComponentJedis/jedis-set">
+    <sca:interface.wsdl xmi:id="_P64roKjcEee-or8dxyMlng" interface="http://xmlns.example.com/20171004101557PLT#wsdl.interface(jedis-set)" scaext:wsdlLocation="../Processes/testcacheaws/module/Jedis.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_P68WAKjcEee-or8dxyMlng" name="RestService" path="/jedis/set" docBasePath="http://localhost:7777/JedisCacheAWS.module" docResourcePath="Jedis" basePath="/" connector="jediscacheaws.module.Resource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/testcacheaws.module.Jedis-Jedis.json">
+      <operation xmi:id="_P689EKjcEee-or8dxyMlng" operationName="post" nickname="post-jedis-set" httpMethod="POST" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_P7AAYKjcEee-or8dxyMlng"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_P689EajcEee-or8dxyMlng" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_GWQE8qjiEee-or8dxyMlng" name="jedis-get" promote="ComponentJedis/jedis-get">
+    <sca:interface.wsdl xmi:id="_GWQsAqjiEee-or8dxyMlng" interface="http://xmlns.example.com/20171004101557PLT#wsdl.interface(jedis-get)" scaext:wsdlLocation="../Processes/testcacheaws/module/JedisManagment.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_GWRTEKjiEee-or8dxyMlng" name="RestService1" path="/jedis/get" docBasePath="http://localhost:7777/JedisCacheAWS.module" docResourcePath="Jedis" basePath="/" connector="jediscacheaws.module.Resource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/testcacheaws.module.JedisManagment-Jedis.json">
+      <operation xmi:id="_GWRTEajiEee-or8dxyMlng" operationName="get" nickname="get-jedis-get" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_ionuYKjiEeePOJU2nCSj0Q">
+          <parameterMapping xmi:id="_ionuYajiEeePOJU2nCSj0Q" parameterName="key" parameterType="Query" dataType="string" required="true"/>
+          <parameterMapping xmi:id="_2zCZQKjiEeePOJU2nCSj0Q" parameterName="type" parameterType="Query" dataType="integer#int32"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_GWriwKjiEee-or8dxyMlng"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_GWRTEqjiEee-or8dxyMlng" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="_rg6n8KjmEeePOJU2nCSj0Q" name="jedis-clear" promote="ComponentJedis/jedis-clear">
+    <sca:interface.wsdl xmi:id="_rg_gcKjmEeePOJU2nCSj0Q" interface="http://xmlns.example.com/20171004101557PLT#wsdl.interface(jedis-clear)" scaext:wsdlLocation="../Processes/testcacheaws/module/JedisManagment.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_rhDK0KjmEeePOJU2nCSj0Q" name="RestService2" path="/jedis/clear" docBasePath="http://localhost:7777/JedisCacheAWS.module" docResourcePath="Jedis" basePath="/" connector="jediscacheaws.module.Resource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/testcacheaws.module.JedisManagment-Jedis.json">
+      <operation xmi:id="_rhDx4KjmEeePOJU2nCSj0Q" operationName="delete" nickname="delete-jedis-clear" httpMethod="DELETE" responseStyle="element">
+        <parameters xmi:id="_uDQeQKmpEeelQ8jgaNbAMw">
+          <parameterMapping xmi:id="_uDQeQampEeelQ8jgaNbAMw" parameterName="key" parameterType="Query" dataType="string"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_rhFnEKjmEeePOJU2nCSj0Q"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_rhDx4ajmEeePOJU2nCSj0Q" bindingName="RestService2"/>
+  </sca:service>
+  <sca:property xmi:id="_4x34EKdvEeezxaQN1OMdFQ" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_4yXAQKdvEeezxaQN1OMdFQ" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_4y2vgKdvEeezxaQN1OMdFQ" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_4zV3sKdvEeezxaQN1OMdFQ" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_4zzKsKdvEeezxaQN1OMdFQ" name="BW.DOMAIN.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_40MzUKdvEeezxaQN1OMdFQ" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_40kmwKdvEeezxaQN1OMdFQ" name="BW.APPSPACE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_407MEKdvEeezxaQN1OMdFQ" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_41SYcKdvEeezxaQN1OMdFQ" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_nOTfUKhOEeezxaQN1OMdFQ" name="/HTTP/host" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_v4AeoKjTEee-or8dxyMlng" name="/HTTP/port" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_XuTHIKjoEee64rzL3crSXA" name="/Timer/startTime" type="XMLSchema:dateTime" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_gOx6cKjoEee64rzL3crSXA" name="/Timer/hourTimeInterval" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="__WZ8EKdvEeezxaQN1OMdFQ" name="ComponentActivator" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="__WZ8EadvEeezxaQN1OMdFQ" processName="jediscacheaws.module.Activator"/>
+  </sca:component>
+  <sca:component xmi:id="_P6rQQKjcEee-or8dxyMlng" name="ComponentJedis" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_P6rQQajcEee-or8dxyMlng" processName="jediscacheaws.module.JedisManagment"/>
+    <sca:service xmi:id="_P6u6oKjcEee-or8dxyMlng" name="jedis-set">
+      <sca:interface.wsdl xmi:id="_P6wIwKjcEee-or8dxyMlng" interface="http://xmlns.example.com/20171004101557PLT#wsdl.interface(jedis-set)" scaext:wsdlLocation="../Processes/testcacheaws/module/Jedis.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_GWQE8KjiEee-or8dxyMlng" name="jedis-get">
+      <sca:interface.wsdl xmi:id="_GWQE8ajiEee-or8dxyMlng" interface="http://xmlns.example.com/20171004101557PLT#wsdl.interface(jedis-get)" scaext:wsdlLocation="../Processes/testcacheaws/module/JedisManagment.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_rg29kKjmEeePOJU2nCSj0Q" name="jedis-clear">
+      <sca:interface.wsdl xmi:id="_rg4LsKjmEeePOJU2nCSj0Q" interface="http://xmlns.example.com/20171004101557PLT#wsdl.interface(jedis-clear)" scaext:wsdlLocation="../Processes/testcacheaws/module/JedisManagment.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_V-eIQKjoEee64rzL3crSXA" name="ComponentClearCache" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_V-eIQajoEee64rzL3crSXA" processName="jediscacheaws.sheduling.ClearCache"/>
+  </sca:component>
+</sca:composite>

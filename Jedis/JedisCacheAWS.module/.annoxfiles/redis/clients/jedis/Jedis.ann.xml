@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<annox:class xmlns:annox="http://annox.dev.java.net" xmlns:jaxb="http://annox.dev.java.net/javax.xml.bind.annotation" name="Jedis">
+  <jaxb:XmlAccessorType value="NONE"/>
+  <jaxb:XmlType name="JedisType" propOrder="dataSource "/>
+  <jaxb:XmlRootElement name="Jedis" namespace="www.tibco.com/plugin/java/xmlSchema/redis.clients.jedis.Jedis"/>
+  <annox:field name="dataSource">
+    <jaxb:XmlElement name="DataSource" namespace="www.tibco.com/plugin/java/xmlSchema/redis.clients.jedis.Jedis" required="false"/>
+  </annox:field>
+</annox:class>
